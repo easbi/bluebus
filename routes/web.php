@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
+});
+
+Route::get('/booking', function () {
+    return view('home.reservation');
+});
+
+Route::get('/admin', function () {
+    return view('admin.index');
 });
