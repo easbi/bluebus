@@ -63,46 +63,45 @@
 
         <!-- Input Form Disini -->
         <!-- Booking Form -->
-        <form action="#" method="POST">
+        <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
           <div class="row">
-
+            
             <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="name">Nama Pemesan</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Anda" required>
+                <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" placeholder="Masukkan Nama Anda" required>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="name">Nomor HP/Whatsapp</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Anda" required>
+                <input type="text" class="form-control" id="no_hp_wa" name="no_hp_wa" placeholder="Masukkan Nama Anda" required>
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="form-group mb-3">
                 <label for="address">Lokasi Tujuan</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Masukkan Alamat Anda" required>
+                <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Masukkan Alamat Anda" required>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group mb-3">
-                <label for="date">Tanggal Keberangkatan</label>
-                <input type="date" class="form-control" id="date" name="date" required>
+                <label for="tanggal_penjemputan">Tanggal Keberangkatan</label>
+                <input type="date" class="form-control" id="tanggal_penjemputan" name="tanggal_penjemputan" required>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group mb-3">
-                <label for="date">Tanggal Kembali</label>
-                <input type="date" class="form-control" id="date" name="date" required>
+                <label for="tanggal_kembali">Tanggal Kembali</label>
+                <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" required>
               </div>
             </div>
-
           </div>
-
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary">Kirim Pesanan</button>
         </form>

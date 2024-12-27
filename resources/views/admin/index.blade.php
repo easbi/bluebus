@@ -288,11 +288,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
+                    </div> -->
 
                     <!-- Content Row -->
                     <div class="row">
@@ -382,9 +382,73 @@
                     </div>
 
                     <!-- Content Row -->
+                    <div class="row">                        
+                    </div>
 
-                    <div class="row">
-                        
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tabel Pemesanan</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>No HP/ Whatsapp</th>
+                                            <th>Tujuan</th>
+                                            <th>Tanggal Penjemputan</th>
+                                            <th>Tanggal Kembali</th>
+                                            <th>Timestamp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Arih</td>
+                                            <td>085298576987</td>
+                                            <td>Pariaman</td>
+                                            <td>2024/12/25</td>
+                                            <td>2024/12/25</td>
+                                            <td>2011/04/25 12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gemini</td>
+                                            <td>085298576987</td>
+                                            <td>Payokumbuh</td>
+                                            <td>2024/12/25</td>
+                                            <td>2024/12/25</td>
+                                            <td>2011/04/25 12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Isdihar</td>
+                                            <td>085298576987</td>
+                                            <td>Padang Mangateh</td>
+                                            <td>2024/12/25</td>
+                                            <td>2024/12/25</td>
+                                            <td>2011/04/25 12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brille</td>
+                                            <td>085298576987</td>
+                                            <td>Padang Panjang</td>
+                                            <td>2024/12/25</td>
+                                            <td>2024/12/25</td>
+                                            <td>2011/04/25 12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Heri</td>
+                                            <td>085298576987</td>
+                                            <td>Pamutusan Island</td>
+                                            <td>2024/12/25</td>
+                                            <td>2024/12/25</td>
+                                            <td>2011/04/25 12:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -397,7 +461,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Iqbal TransGroup 2025</span>
                     </div>
                 </div>
             </footer>

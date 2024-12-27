@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BookingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('booking', BookingController::class);
+
 Route::get('/', function () {
     return view('home.index');
-});
+})->name('home');
 
-Route::get('/booking', function () {
+Route::get('/booking2', function () {
     return view('home.reservation');
 });
 

@@ -73,7 +73,7 @@
           <p data-aos="fade-up" data-aos-delay="100">Teman Perjalanan Wisata Anda<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#about" class="btn-get-started">Booking Sekarang</a>
-            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Tonton Video</span></a>
+            <a href="https://www.youtube.com/watch?v=2PZ0gklBu0Q" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Tonton Video</span></a>
           </div>
           <img src="{{asset('QuickStart/assets/img/hero-services-img.webp')}}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
