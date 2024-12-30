@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['index', 'createbyDriver']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,10 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $booking =  DB::table('booking')->get();
+        if (auth()->user()->id !== 1) {
+            return redirect('/')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
+        $booking =  DB::table('booking')->leftjoin('users', 'booking.created_by', 'users.id')->select('booking.*', 'users.name')->orderBy('id', 'desc')->get();
         return view('admin.index', compact('booking'))->with('i');
     }
 
@@ -26,6 +36,11 @@ class BookingController extends Controller
     public function create()
     {
         return view('home.reservation');
+    }
+
+    public function createbyDriver()
+    {
+        return view('driver.orderform');
     }
 
     /**
@@ -40,6 +55,7 @@ class BookingController extends Controller
             'nama_pemesan' => 'required|string|max:255',
             'no_hp_wa' => 'required|string|max:15',
             'tujuan' => 'required|string|max:255',
+            'lokasi_jemput' => 'required|string|max:250',
             'tanggal_penjemputan' => 'required|date',
             'tanggal_kembali' => 'required|date|after_or_equal:tanggal_penjemputan',
         ]);
@@ -47,9 +63,11 @@ class BookingController extends Controller
         $result = Booking::create([
             'nama_pemesan' => $request->nama_pemesan,
             'no_hp_wa' => $request->no_hp_wa,
-            'tujuan' => $request->tujuan,
+            'lokasi_tujuan' => $request->tujuan,
+            'lokasi_jemput' => $request->lokasi_jemput,
             'tanggal_penjemputan' => $request->tanggal_penjemputan,
             'tanggal_kembali' => $request->tanggal_kembali,
+            'created_by' => Auth::check() ? Auth::user()->id : null,
         ]);
 
         return redirect()->route('home')

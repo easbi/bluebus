@@ -12,8 +12,10 @@ class Booking extends Model
     protected $fillable=[
         'nama_pemesan',
         'no_hp_wa',
-        'tujuan',
+        'lokasi_tujuan',
+        'lokasi_jemput',
         'tanggal_penjemputan',
         'tanggal_kembali',
+        'created_by',
     ];
 }

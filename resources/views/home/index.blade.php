@@ -48,14 +48,14 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="{{ route('home') }}" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="#about">Booking</a>
+      <a class="btn-getstarted" href="{{ route('booking2') }}">Booking</a>
 
     </div>
   </header>
@@ -72,10 +72,10 @@
           <h1 data-aos="fade-up">Welcome to <span>ITG</span></h1>
           <p data-aos="fade-up" data-aos-delay="100">Teman Perjalanan Wisata Anda<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#about" class="btn-get-started">Booking Sekarang</a>
+            <a href="{{ route('booking2') }}" class="btn-get-started">Booking Sekarang</a>
             <a href="https://www.youtube.com/watch?v=2PZ0gklBu0Q" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Tonton Video</span></a>
           </div>
-          <img src="{{asset('QuickStart/assets/img/hero-services-img.webp')}}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{{asset('QuickStart/assets/img/IMG_9255-removebg.png')}}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
 
@@ -129,45 +129,40 @@
     <section id="about" class="about section">
 
       <div class="container">
+          <div class="row gy-4 align-items-center">
 
-        <div class="row gy-4">
+            <!-- Konten Teks -->
+            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+              <p class="who-we-are">Who We Are</p>
+              <h3>Temukan Petualangan Baru Anda Bersama Kami</h3>
+              <p class="fst-italic">
+                Perjalanan Bus yang Nyaman, Aman, dan Terjangkau untuk Semua Kalangan.
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> <span>Nikmati kenyamanan dan kemewahan armada bus modern kami.</span></li>
+                <li><i class="bi bi-check-circle"></i> <span>Dengan pengemudi profesional dan bus yang terawat.</span></li>
+                <li><i class="bi bi-check-circle"></i> <span>Harga terjangkau tanpa mengurangi kualitas layanan.</span></li>
+              </ul>
+              <a href="{{ route('booking2') }}" class="read-more"><span>Pesan Sekarang</span><i class="bi bi-arrow-right"></i></a>
+            </div>
 
-          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-            <p class="who-we-are">Who We Are</p>
-            <h3>Temukan Petualangan Baru Anda Bersama Kami</h3>
-            <p class="fst-italic">
-              Perjalanan Bus yang Nyaman, Aman, dan Terjangkau untuk Semua Kalangan.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Nikmati kenyamanan dan kemewahan armada bus modern kami.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Dengan pengemudi profesional dan bus yang terawat.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Harga terjangkau tanpa mengurangi kualitas layanan.</span></li>
-            </ul>
-            <a href="#" class="read-more"><span>Pesan Sekarang</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-
-          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-              <div class="col-lg-6">
-                <img src="{{asset('QuickStart/assets/img/about-company-1.jpg')}}" class="img-fluid" alt="">
-              </div>
-              <div class="col-lg-6">
-                <div class="row gy-4">
-                  <div class="col-lg-12">
-                    <img src="{{asset('QuickStart/assets/img/about-company-2.jpg')}}" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-12">
-                    <img src="{{asset('QuickStart/assets/img/about-company-3.jpg')}}" class="img-fluid" alt="">
-                  </div>
+            <!-- Gambar -->
+            <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+              <div class="row g-3 justify-content-center">
+                <!-- Gambar 1 -->
+                <div class="col-md-6 col-12">
+                  <img src="{{asset('QuickStart/assets/img/bus1.png')}}" class="img-fluid" alt="">
+                </div>
+                <!-- Gambar 2 -->
+                <div class="col-md-6 col-12">
+                  <img src="{{asset('QuickStart/assets/img/IMG_9257.PNG')}}" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
 
           </div>
-
         </div>
 
-      </div>
     </section><!-- /About Section -->
 
     <!-- Clients Section -->

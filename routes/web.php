@@ -1,28 +1,47 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\SpjController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::resource('booking', BookingController::class);
 
 Route::get('/', function () {
     return view('home.index');
 })->name('home');
 
-Route::get('/booking2', function () {
-    return view('home.reservation');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+
+Route::get('/admin', [BookingController::class, 'index']);
+Route::get('/createbyDriver', [BookingController::class, 'createbyDriver']);
+Route::resource('booking', BookingController::class);
+
+
+Route::resource('spj', SpjController::class);
+
+Route::get('/booking2', function () {
+    return view('home.reservation');
+})->name('booking2');
+
+require __DIR__.'/auth.php';
+
+

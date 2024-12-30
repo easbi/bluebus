@@ -40,7 +40,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="{{ route('home') }}" class="active">Home</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -81,10 +81,17 @@
               </div>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="address">Lokasi Tujuan</label>
                 <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Masukkan Alamat Anda" required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="address">Lokasi Penjemputan</label>
+                <input type="text" class="form-control" id="lokasi_jemput" name="lokasi_jemput" placeholder="Masukkan Alamat Anda" required>
               </div>
             </div>
 
