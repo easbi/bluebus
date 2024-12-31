@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,6 +14,19 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     /**
+     * Display a list of all admins.
+     */
+    public function index(): View
+    {
+        // Pastikan hanya admin yang bisa mengakses
+        if (Auth::user()->id !== 1) {
+            abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
+        $drivers = User::all(); 
+        return view('admin.driver', compact('drivers'))->with('i');;
+    }
+
+    /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
@@ -19,6 +34,36 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
+    }
+
+    /**
+     * Show the form to edit a specific admin.
+     */
+    public function editAdmin($id): View
+    {
+        $driver = User::findOrFail($id); // Cari admin berdasarkan ID
+        return view('admin.driveredit', compact('driver'));
+    }
+
+    /**
+     * Update the admin's information.
+     */
+    public function updateAdmin(Request $request, $id): RedirectResponse
+    {
+        $admin = User::findOrFail($id);
+
+        // Validasi input
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'no_hp_wa' => 'nullable|string|max:15',
+            'tgl_bergabung' => 'nullable|date',
+        ]);
+
+        // Update data admin
+        $admin->update($validated);
+
+        return redirect()->route('admin.driver')->with('status', 'Admin berhasil diperbarui.');
     }
 
     /**

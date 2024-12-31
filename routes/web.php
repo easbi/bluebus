@@ -24,6 +24,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/admin/driver', [ProfileController::class, 'index'])->name('admin.driver');
+Route::get('/admin/driver/{id}/edit', [ProfileController::class, 'editAdmin'])->name('admin.driveredit');
+Route::patch('/admin/driver/{id}', [ProfileController::class, 'updateAdmin'])->name('admin.driverupdate');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

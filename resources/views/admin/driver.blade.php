@@ -1,5 +1,7 @@
 @extends('layouts.template2')
 @section('content')
+<!-- Page Heading -->
+<h1 class="h3 mb-4 text-gray-800">Kelola Driver</h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -19,20 +21,16 @@
                     </tr>
                 </thead>
                 <tbody>                                        
-                    @foreach ($driver as $driver)
+                    @foreach ($drivers as $driver)
                     <tr>
                         <td>{{ ++$i }}</td>
-                        <td>{{ $driver->nama_pemesan }}</td>
-                        <td>{{ $driver->no_hp_wa }}</td>
-                        <td>{{ $driver->lokasi_tujuan }}</td>
-                        <td>{{ $driver->lokasi_jemput }}</td>
-                        <td>{{ $driver->tanggal_penjemputan }}</td>
-                        <td>{{ $driver->tanggal_kembali }}</td>
-                        <td>{{ $driver->created_at }}</td>
                         <td>{{ $driver->name }}</td>
+                        <td>{{ $driver->no_hp_wa }}</td>
+                        <td>{{ $driver->email }}</td>
+                        <td>{{ $driver->tgl_bergabung }}</td>
                         <td>
-                            <form action="{{ route('driver.destroy',$driver->id) }}" method="POST">
-                                <a class="btn btn-primary btn-sm" href="{{ route('driver.edit',$driver->id) }}">Edit</a>
+                            <form action="#" method="POST">
+                                <a class="btn btn-primary btn-sm" href="{{ route('admin.driveredit', $driver->id) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
