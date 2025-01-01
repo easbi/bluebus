@@ -38,14 +38,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin', [BookingController::class, 'index']);
 Route::get('/createbyDriver', [BookingController::class, 'createbyDriver']);
+Route::get('/booking2', [BookingController::class, 'create'])->name('booking2');;
 Route::resource('booking', BookingController::class);
 
 
 Route::resource('spj', SpjController::class);
-
-Route::get('/booking2', function () {
-    return view('home.reservation');
-})->name('booking2');
 
 require __DIR__.'/auth.php';
 

@@ -60,13 +60,24 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+      
+      @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
 
         <!-- Input Form Disini -->
         <!-- Booking Form -->
         <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="row">
-            
+
             <div class="col-md-6">
               <div class="form-group mb-3">
                 <label for="name">Nama Pemesan</label>
@@ -106,6 +117,21 @@
               <div class="form-group mb-3">
                 <label for="tanggal_kembali">Tanggal Kembali</label>
                 <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" required>
+              </div>
+            </div>            
+
+            <div class="col-md-6">
+              <div class="form-group mb-3">                
+                <label for="jenis_bus">Tipe/Armada Bus</label>
+                <select id="jenis_bus" name="jenis_bus" class="form-control" required>
+                  <option value="" selected>Pilih</option>
+                  <option value="">Bebas/Sama Saja</option>
+                  @foreach ($bus_type as $bt)
+                  <option value="{{ $bt->id }}">
+                    {{ $bt->armada }}
+                  </option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>

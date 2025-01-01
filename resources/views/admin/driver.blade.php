@@ -17,6 +17,7 @@
                         <th>No HP/ Whatsapp</th>
                         <th>Email</th>
                         <th>Waktu Bergabung</th>
+                        <th>Status Driver</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td>{{ $driver->no_hp_wa }}</td>
                         <td>{{ $driver->email }}</td>
                         <td>{{ $driver->tgl_bergabung }}</td>
+                        <td>{{ $driver->status_driver }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <a class="btn btn-primary btn-sm" href="{{ route('admin.driveredit', $driver->id) }}">Edit</a>

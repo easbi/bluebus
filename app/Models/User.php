@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'no_hp_wa',
         'tgl_bergabung',
+        'status_driver',
     ];
 
     /**

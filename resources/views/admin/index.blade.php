@@ -14,14 +14,14 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
+                        <th>Nama Pemesan</th>
                         <th>No HP/ Whatsapp</th>
                         <th>Tujuan</th>
                         <th>Lokasi Penjemputan</th>
                         <th>Tanggal Penjemputan</th>
                         <th>Tanggal Kembali</th>
                         <th>Timestamp</th>
-                        <th>Orderan</th>
+                        <th>Pengambil Orderan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>

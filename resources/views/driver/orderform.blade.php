@@ -108,6 +108,21 @@
                 <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" required>
               </div>
             </div>
+
+            <div class="col-md-6">
+              <div class="form-group mb-3">                
+                    <label for="jenis_bus">Tipe/Armada Bus</label>
+                    <select id="jenis_bus" name="jenis_bus" class="form-control" required>
+                        <option value="" selected>Pilih</option>
+                        <option value="">Bebas/Sama Saja</option>
+                        @foreach ($bus_type as $bt)
+                            <option value="{{ $bt->id }}">
+                                {{ $bt->armada }}
+                            </option>
+                        @endforeach
+                    </select>
+              </div>
+            </div>
           </div>
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary">Kirim Pesanan</button>

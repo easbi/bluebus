@@ -17,5 +17,6 @@ class Booking extends Model
         'tanggal_penjemputan',
         'tanggal_kembali',
         'created_by',
+        'tipe_bus',
     ];
 }

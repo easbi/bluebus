@@ -58,7 +58,15 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255|unique:users,email,' . $id,
             'no_hp_wa' => 'nullable|string|max:15',
             'tgl_bergabung' => 'nullable|date',
+            'status_driver' => 'nullable|string|max:100',
+            'password' => 'nullable|string|min:8|confirmed',
         ]);
+
+        if ($request->filled('password')) {
+            $validated['password'] = \Hash::make($request->password);
+        } else {
+            unset($validated['password']); 
+        }
 
         // Update data admin
         $admin->update($validated);

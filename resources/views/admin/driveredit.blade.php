@@ -5,9 +5,18 @@
 <h1 class="h3 mb-4 text-gray-800">Update Data Driver By Admin</h1>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Tabel Pemesanan</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Tabel Driver</h6>
     </div>
     <div class="card-body">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('admin.driverupdate', $driver->id) }}" method="POST">
             @csrf
             @method('PATCH')
@@ -30,6 +39,20 @@
             <div class="mb-3">
                 <label for="tgl_bergabung" class="form-label">Tanggal Bergabung</label>
                 <input type="date" id="tgl_bergabung" name="tgl_bergabung" class="form-control" value="{{ old('tgl_bergabung', $driver->tgl_bergabung) }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="status_driver" class="form-label">Status Driver</label>
+                <input type="text" id="status_driver" name="status_driver" class="form-control" value="{{ old('status_driver', $driver->status_driver) }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Ganti Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Kosongkan jika tidak ingin mengganti password">
+            </div>
+            <div class="mb-3">
+                <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Ulangi password baru">
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>

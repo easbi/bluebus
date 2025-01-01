@@ -25,6 +25,8 @@ class BookingController extends Controller
             return redirect('/')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
         $booking =  DB::table('booking')->leftjoin('users', 'booking.created_by', 'users.id')->select('booking.*', 'users.name')->orderBy('id', 'desc')->get();
+
+        // dd($booking);
         return view('admin.index', compact('booking'))->with('i');
     }
 
@@ -35,12 +37,15 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('home.reservation');
+        $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
+        return view('home.reservation', compact('bus_type'));
     }
 
     public function createbyDriver()
     {
-        return view('driver.orderform');
+
+        $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
+        return view('driver.orderform', compact('bus_type'));
     }
 
     /**
@@ -58,6 +63,7 @@ class BookingController extends Controller
             'lokasi_jemput' => 'required|string|max:250',
             'tanggal_penjemputan' => 'required|date',
             'tanggal_kembali' => 'required|date|after_or_equal:tanggal_penjemputan',
+            'jenis_bus' => 'nullable',
         ]);
 
         $result = Booking::create([
@@ -68,6 +74,7 @@ class BookingController extends Controller
             'tanggal_penjemputan' => $request->tanggal_penjemputan,
             'tanggal_kembali' => $request->tanggal_kembali,
             'created_by' => Auth::check() ? Auth::user()->id : null,
+            'tipe_bus' => $request->jenis_bus,
         ]);
 
         return redirect()->route('home')
@@ -93,7 +100,15 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        // Periksa apakah pengguna memiliki hak akses untuk mengedit (contoh: hanya admin)
+        if (auth()->user()->id !== 1) {
+            return redirect('/')->with('error', 'Anda tidak memiliki akses untuk mengedit data ini.');
+        }
+        $users = User::select('id', 'name')->get();
+        $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
+
+        // dd($booking);
+        return view('admin.bookingedit', compact('booking', 'users', 'bus_type'));
     }
 
     /**
@@ -105,7 +120,31 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        $validated = $request->validate([
+            'nama_pemesan' => 'required|string|max:255',
+            'no_hp_wa' => 'required|string|max:15',
+            'tujuan' => 'required|string|max:255',
+            'lokasi_jemput' => 'required|string|max:250',
+            'tanggal_penjemputan' => 'required|date',
+            'tanggal_kembali' => 'required|date|after_or_equal:tanggal_penjemputan',
+            'pengambil_orderan' => 'nullable',
+            'jenis_bus' => 'nullable',
+        ]);
+
+        $booking->update([
+            'nama_pemesan' => $validated['nama_pemesan'],
+            'no_hp_wa' => $validated['no_hp_wa'],
+            'lokasi_tujuan' => $validated['tujuan'],
+            'lokasi_jemput' => $validated['lokasi_jemput'],
+            'tanggal_penjemputan' => $validated['tanggal_penjemputan'],
+            'tanggal_kembali' => $validated['tanggal_kembali'],
+            'created_by' => $validated['pengambil_orderan'],
+            'tipe_bus' => $validated['jenis_bus'],
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('booking.index')
+                         ->with('success', 'Data booking berhasil diperbarui.');
     }
 
     /**
@@ -116,6 +155,11 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        if (auth()->user()->id !== 1) {
+            return redirect('/')->with('error', 'Anda tidak memiliki akses untuk menghapus data ini.');
+        }
+        $booking->delete();
+        return redirect()->route('booking.index')
+                     ->with('success', 'Data booking berhasil dihapus.');
     }
 }
