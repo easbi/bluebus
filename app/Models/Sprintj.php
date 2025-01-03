@@ -10,7 +10,8 @@ class Sprintj extends Model
     use HasFactory;
     protected $table = 'spj';
     protected $fillable=[
-        'np_spj',
+        'booking_id',
+        'no_spj',
         'tgl_spj',
         'nama_pemesan',
         'no_hp_wa',
@@ -18,6 +19,8 @@ class Sprintj extends Model
         'lokasi_jemput',
         'tanggal_penjemputan',
         'tanggal_kembali',
+        'driver_id',
+        'bus_id',
         'lama_sewa',
         'tarif_sewa',
         'down_payment',

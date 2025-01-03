@@ -17,6 +17,14 @@
                 </ul>
             </div>
         @endif
+
+        <!-- Menampilkan error khusus "Booking ID sudah ada" -->
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        
         <form action="{{ route('booking.update', $booking->id) }}" method="POST">
             @csrf
             @method('PATCH')
@@ -90,9 +98,27 @@
 
 
 
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{ route('booking.index') }}" class="btn btn-secondary">Batal</a>
+            <div class="mb-3">
+                <div class="form-group mb-3 d-flex justify-content-between">
+                    <div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('booking.index') }}" class="btn btn-secondary">Batal</a>
+                    </div>
+                </div>
+            </div>
         </form>
+
+        <div class="mb-3">
+            <div class="form-group mb-3 d-flex justify-content-between">            
+                <div></div>
+                <div>
+                    <form action="{{ route('spj.store2', $booking->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-warning">Teruskan ke SPJ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

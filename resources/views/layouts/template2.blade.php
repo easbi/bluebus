@@ -44,14 +44,21 @@
             <hr class="sidebar-divider">
 
             <div class="sidebar-heading">
-                Transaksi Pemesanan
+                Transaksi
             </div>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('booking.index') }}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Transaksi</span>
+                    <span>Tabel Booking</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('spj.index') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tabel SPJ</span>
                 </a>
             </li>
 
@@ -324,12 +331,7 @@ aria-hidden="true">
 <!-- Custom scripts for all pages-->
 <script src="{{asset('sbadmin/js/sb-admin-2.min.js')}}"></script>
 
-<!-- Page level plugins -->
-<script src="{{asset('sbadmin/vendor/chart.js/Chart.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('sbadmin/js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('sbadmin/js/demo/chart-pie-demo.js')}}"></script>
+@stack('scripts')
 
 </body>
 
