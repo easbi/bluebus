@@ -42,6 +42,7 @@ Route::get('/booking2', [BookingController::class, 'create'])->name('booking2');
 Route::resource('booking', BookingController::class);
 
 Route::post('/spj/{booking}', [SpjController::class, 'store2'])->name('spj.store2');
+Route::get('/spj/driver', [SpjController::class, 'index2'])->name('spj.driver');
 Route::resource('spj', SpjController::class);
 
 require __DIR__.'/auth.php';

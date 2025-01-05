@@ -30,6 +30,26 @@ class SpjController extends Controller
         return view('admin.spj.index', compact('spj'))->with('i');
     }
 
+    public function index2()
+    {
+        if (auth()->user()->id != 1) {
+            return redirect('/')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
+        $spj =  DB::table('spj')
+            ->join('booking', 'spj.booking_id', 'booking.id')
+            ->leftjoin('users', 'booking.created_by', 'users.id')
+            ->select('spj.*', 'users.name as order_name', 'booking.created_by AS orderan_driver')
+            ->get();
+
+        $driverOrders = $spj->groupBy('order_name')->map(function ($group) {
+            return $group->count(); // Hitung jumlah orderan per driver
+        });
+
+        // dd($driverOrders);
+        
+        return view('admin.driver.index', ['driverOrders' => $driverOrders])->with('i');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -97,9 +117,17 @@ class SpjController extends Controller
      * @param  \App\Models\Sprintj  $sprintj
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sprintj $sprintj)
-    {
-        //
+    public function edit($id)
+    {        
+        if (auth()->user()->id !== 1) {
+            return redirect('/')->with('error', 'Anda tidak memiliki akses untuk mengedit data ini.');
+        }
+
+        $sprintj = Sprintj::where('id', $id)->first();
+        $users = User::select('id', 'name')->get();
+        $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
+
+        return view('admin.spj.edit', compact('sprintj', 'users', 'bus_type'));
     }
 
     /**
@@ -109,9 +137,51 @@ class SpjController extends Controller
      * @param  \App\Models\Sprintj  $sprintj
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sprintj $sprintj)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'no_spj' => 'required',
+            'tgl_spj' => 'required',
+            'nama_pemesan' => 'required|string|max:255',
+            'no_hp_wa' => 'required|string|max:15',
+            'tujuan' => 'required|string|max:255',
+            'lokasi_jemput' => 'required|string|max:250',
+            'tanggal_penjemputan' => 'required|date',
+            'tanggal_kembali' => 'required|date|after_or_equal:tanggal_penjemputan',
+            'bus_id' => 'required',
+            'driver_id' => 'required',
+            'lama_sewa' => 'required',
+            'tarif_sewa' => 'required',
+            'down_payment' => 'required',
+            'jml_setoran' => 'required',
+            'tgl_setoran' => 'required',
+        ]);
+
+        $sprintj = Sprintj::findOrFail($id);
+
+        $sprintj->update([  
+            'no_spj' => $validated['no_spj'],
+            'tgl_spj' => $validated['tgl_spj'],     
+            'nama_pemesan' => $validated['nama_pemesan'],
+            'no_hp_wa' => $validated['no_hp_wa'],
+            'lokasi_tujuan' => $validated['tujuan'],
+            'lokasi_jemput' => $validated['lokasi_jemput'],
+            'tanggal_penjemputan' => $validated['tanggal_penjemputan'],
+            'tanggal_kembali' => $validated['tanggal_kembali'],
+            'driver_id' => $validated['driver_id'],
+            'bus_id' => $validated['bus_id'],
+            'tarif_sewa' => $validated['tarif_sewa'],
+            'lama_sewa' => $validated['lama_sewa'],
+            'down_payment' => $validated['down_payment'],
+            'jml_setoran' => $validated['jml_setoran'],
+            'tgl_setoran' => $validated['tgl_setoran'],
+        ]);
+
+        $sprintj->save();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('spj.index')
+                         ->with('success', 'Data SPJ berhasil diperbarui.');
     }
 
     /**
@@ -120,8 +190,12 @@ class SpjController extends Controller
      * @param  \App\Models\Sprintj  $sprintj
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sprintj $sprintj)
+    public function destroy($id)
     {
-        //
+        $sprintj = Sprintj::findOrFail($id);
+        $sprintj->delete();
+        return redirect()->route('spj.index')
+                         ->with('success', 'Data SPJ berhasil dihapus.');
     }
+
 }

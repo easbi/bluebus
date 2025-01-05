@@ -10,7 +10,14 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Pemesanan</h6>
     </div>
-    <div class="card-body">        
+    <div class="card-body">               
+        <!-- Menampilkan pesan sukses jika ada -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
         <!-- Menampilkan pesan error jika ada -->
         @if(session('error'))
             <div class="alert alert-danger">
@@ -62,7 +69,7 @@
                             @if (!$existingSpj)
                                 <form action="{{ route('spj.store2', $booking->id) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-warning">Teruskan ke SPJ</button>
+                                    <button type="submit" class="btn btn-warning">Buat SPJ</button>
                                 </form>
                             @else
                                 <!-- Tampilkan pesan jika sudah ada data di tabel SPJ -->

@@ -28,4 +28,5 @@ class Sprintj extends Model
         'tgl_setoran',
         'created_by',
     ];
+    protected $guarded = [];
 }
