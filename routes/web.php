@@ -47,4 +47,9 @@ Route::resource('spj', SpjController::class);
 
 require __DIR__.'/auth.php';
 
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
 

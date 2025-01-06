@@ -52,8 +52,8 @@
                         <td>{{ $spj->no_hp_wa }}</td>
                         <td>{{ $spj->lokasi_tujuan }}</td>
                         <td>{{ $spj->lokasi_jemput }}</td>
-                        <td>{{ $spj->tanggal_penjemputan }}</td>
-                        <td>{{ $spj->tanggal_kembali }}</td>
+                        <td>{{ \Carbon\Carbon::parse($spj->tanggal_penjemputan)->locale('id')->translatedFormat('d-F-Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($spj->tanggal_kembali)->locale('id')->translatedFormat('d-F-Y') }}</td>
                         <td>{{ $spj->name }}</td>
                         <td>{{ $spj->created_at }}</td>
                         <td>
