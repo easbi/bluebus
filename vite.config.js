@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
-export default defineConfig({
+export default defineConfig({   
+    base: '/app/bluebus/public/',
     plugins: [
         laravel({
             input: [
