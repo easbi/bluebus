@@ -48,10 +48,10 @@
                         <td>{{ $booking->no_hp_wa }}</td>
                         <td>{{ $booking->lokasi_tujuan }}</td>
                         <td>{{ $booking->lokasi_jemput }}</td>
-                        <td>{{ $booking->tanggal_penjemputan }}</td>
-                        <td>{{ $booking->tanggal_kembali }}</td>
+                        <td>{{ \Carbon\Carbon::parse($booking->tanggal_penjemputan)->locale('id')->translatedFormat('d-F-Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($booking->tanggal_kembali)->locale('id')->translatedFormat('d-F-Y') }}</td>
                         <td>{{ $booking->name }}</td>
-                        <td>{{ $booking->created_at }}</td>
+                        <td>{{ \Carbon\Carbon::parse($booking->created_at)->locale('id')->timezone('Asia/Jakarta')->translatedFormat('d-M-Y H:i:s') }} WIB</td>
                         <td>
                             <form action="{{ route('booking.destroy',$booking->id) }}" method="POST">
                                 <a class="btn btn-primary btn-sm" href="{{ route('booking.edit',$booking->id) }}">Edit</a>

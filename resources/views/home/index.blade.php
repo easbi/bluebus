@@ -18,11 +18,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+<<<<<<< HEAD
   <link href="{{asset('public/QuickStart/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('public/QuickStart/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
   <link href="{{asset('public/QuickStart/assets/vendor/aos/aos.css')}}" rel="stylesheet">
   <link href="{{asset('public/QuickStart/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
   <link href="{{asset('public/QuickStart/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+=======
+  <link href="{{asset('QuickStart/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('QuickStart/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('QuickStart/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('QuickStart/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('QuickStart/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+>>>>>>> 218b0d3f45978e47dc0989a92636e42958981684
 
   <!-- Main CSS File -->
   <link href="{{asset('public/QuickStart/assets/css/main.css')}}" rel="stylesheet">
@@ -129,23 +139,24 @@
     <section id="about" class="about section">
 
       <div class="container">
-          <div class="row gy-4 align-items-center">
+        <div class="row gy-4 align-items-center">
 
-            <!-- Konten Teks -->
-            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-              <p class="who-we-are">Who We Are</p>
-              <h3>Temukan Petualangan Baru Anda Bersama Kami</h3>
-              <p class="fst-italic">
-                Perjalanan Bus yang Nyaman, Aman, dan Terjangkau untuk Semua Kalangan.
-              </p>
-              <ul>
-                <li><i class="bi bi-check-circle"></i> <span>Nikmati kenyamanan dan kemewahan armada bus modern kami.</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Dengan pengemudi profesional dan bus yang terawat.</span></li>
-                <li><i class="bi bi-check-circle"></i> <span>Harga terjangkau tanpa mengurangi kualitas layanan.</span></li>
-              </ul>
-              <a href="{{ route('booking2') }}" class="read-more"><span>Pesan Sekarang</span><i class="bi bi-arrow-right"></i></a>
-            </div>
+          <!-- Konten Teks -->
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <p class="who-we-are">Who We Are</p>
+            <h3>Temukan Petualangan Baru Anda Bersama Kami</h3>
+            <p class="fst-italic">
+              Perjalanan Bus yang Nyaman, Aman, dan Terjangkau untuk Semua Kalangan.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> <span>Nikmati kenyamanan dan kemewahan armada bus modern kami.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Dengan pengemudi profesional dan bus yang terawat.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Harga terjangkau tanpa mengurangi kualitas layanan.</span></li>
+            </ul>
+            <a href="{{ route('booking2') }}" class="read-more"><span>Pesan Sekarang</span><i class="bi bi-arrow-right"></i></a>
+          </div>
 
+<<<<<<< HEAD
             <!-- Gambar -->
             <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
               <div class="row g-3 justify-content-center">
@@ -157,11 +168,24 @@
                 <div class="col-md-6 col-12">
                   <img src="{{asset('public/QuickStart/assets/img/IMG_9257.PNG')}}" class="img-fluid" alt="">
                 </div>
+=======
+          <!-- Gambar -->
+          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-3 justify-content-center">
+              <!-- Gambar 1 -->
+              <div class="col-md-6 col-12">
+                <img src="{{asset('QuickStart/assets/img/bus1.png')}}" class="img-fluid" alt="">
+              </div>
+              <!-- Gambar 2 -->
+              <div class="col-md-6 col-12">
+                <img src="{{asset('QuickStart/assets/img/IMG_9257.PNG')}}" class="img-fluid" alt="">
+>>>>>>> 218b0d3f45978e47dc0989a92636e42958981684
               </div>
             </div>
-
           </div>
+
         </div>
+      </div>
 
     </section><!-- /About Section -->
 
@@ -312,15 +336,25 @@
                 </div>
                 <p>
                  Pelayanannya luar biasa! Kursinya nyaman, dan bus selalu tepat waktu. Saya merasa sangat aman selama perjalanan. Terima kasih atas pengalaman yang menyenangkan!
+<<<<<<< HEAD
                 </p>
                 <div class="profile mt-auto">
                   <img src="{{asset('public/QuickStart/assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
                   <h3>Sumarni</h3>
                   <h4>Ibu-Ibu Pengajuan Nurul Ikhlas</h4>
                 </div>
+=======
+               </p>
+               <div class="profile mt-auto">
+                <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
+                <h3>Sumarni</h3>
+                <h4>Ibu-Ibu Pengajuan Nurul Ikhlas</h4>
+>>>>>>> 218b0d3f45978e47dc0989a92636e42958981684
               </div>
-            </div><!-- End testimonial item -->
+            </div>
+          </div><!-- End testimonial item -->
 
+<<<<<<< HEAD
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="stars">
@@ -350,9 +384,25 @@
                   <h3>Jena Suryadi</h3>
                   <h4>Kepala BPS Kota Padang Panjang</h4>
                 </div>
+=======
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
               </div>
-            </div><!-- End testimonial item -->
+              <p>
+                Perjalanan bersama bus ini sangat nyaman, membuat kami bisa menikmati waktu bersama keluarga besar tanpa khawatir soal kenyamanan. Staf bus yang ramah dan fasilitas lengkap membuat perjalanan kami terasa lancar dan menyenangkan. Dengan kapasitas bus yang luas dan perjalanan yang mulus, acara tombongan kami pun menjadi semakin berkesan.
+              </p>
+              <div class="profile mt-auto">
+                <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
+                <h3>Desi Fitriani</h3>
+                <h4>Aktivis</h4>
+>>>>>>> 218b0d3f45978e47dc0989a92636e42958981684
+              </div>
+            </div>
+          </div><!-- End testimonial item -->
 
+<<<<<<< HEAD
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="stars">
@@ -382,96 +432,68 @@
                   <h3>Khairul</h3>
                   <h4>Komisioner Bawaslu Kota Padang Panjang</h4>
                 </div>
+=======
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
               </div>
-            </div><!-- End testimonial item -->
+              <p>
+                Saya menggunakan layanan ini untuk perjalanan keluarga besar kami. Semua berjalan lancar, dan stafnya sangat ramah serta membantu. Pegawai kami pun merasa nyaman sepanjang perjalanan.
+              </p>
+              <div class="profile mt-auto">
+                <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
+                <h3>Jena Suryadi</h3>
+                <h4>Kepala BPS Kota Padang Panjang</h4>
+>>>>>>> 218b0d3f45978e47dc0989a92636e42958981684
+              </div>
+            </div>
+          </div><!-- End testimonial item -->
 
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                Layanan pelanggan sangat responsif! Saya sempat ingin mengubah jadwal, dan prosesnya sangat mudah. Busnya juga tepat waktu, jadi saya tidak khawatir terlambat sampai tujuan.
+              </p>
+              <div class="profile mt-auto">
+                <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
+                <h3>Mak Syukur</h3>
+                <h4>Pegawai Dinas Kebersihan</h4>
+              </div>
+            </div>
+          </div><!-- End testimonial item -->
+
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+               Saya sudah beberapa kali menggunakan layanan bus ini untuk perjalanan acara family gathering kantor kami, dan saya sangat puas. Busnya selalu datang tepat waktu, dan pengemudi sangat profesional dalam berkendara. Saya merasa aman meskipun harus melalui rute yang cukup panjang. Selain itu, fasilitas di dalam bus seperti Wi-Fi dan colokan listrik benar-benar membantu saya untuk tetap produktif selama perjalanan. Saya juga terkesan dengan kebersihan bus dan keramahan kru di dalamnya. Sangat direkomendasikan untuk perjalanan bisnis maupun keluarga besar.
+             </p>
+             <div class="profile mt-auto">
+              <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
+              <h3>Khairul</h3>
+              <h4>Komisioner Bawaslu Kota Padang Panjang</h4>
+            </div>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
+        </div><!-- End testimonial item -->
 
       </div>
-
-    </section><!-- /Testimonials Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Hubungi Kami di Detail Kontak berikut</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt"></i>
-              <h3>Alamat</h3>
-              <p>Jalan Balai-Balai No.5, Kota Padang Panjang</p>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone"></i>
-              <h3>Nomor yang bisa dihubungi</h3>
-              <p>+6285382616185</p>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
-              <a href="https://www.instagram.com/iqbaltransgroup/" target="_blank">
-                <i class="bi bi-envelope"></i>
-              </a>
-              <h3>Instagram</h3>
-              <p>iqbaltransgroup</p>
-            </div>
-          </div><!-- End Info Item -->
-
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
-              <a href="https://www.facebook.com/people/Iqbal-TransGroup/100082727473527/" target="_blank">
-                <i class="bi bi-envelope"></i>
-              </a>
-              <h3>Facebook</h3>
-              <p>Iqbal-TransGroup</p>
-            </div>
-          </div><!-- End Info Item -->
-
-        </div>
-
-        <div class="row gy-4 mt-1">
-          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15906.37877422848!2d100.4054312!3d-0.4668251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fcfd2b4cbfe1837%3A0x9f1434d32db07531!2sPadang%20Panjang!5e0!3m2!1sen!2sid!4v1676961268712" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div><!-- End Google Maps -->
-        </div>
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">IqbalTransGroup</strong><span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <div class="swiper-pagination"></div>
     </div>
 
-  </footer>
+  </div>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</section><!-- /Testimonials Section -->
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+<!-- Contact Section -->
+<section id="contact" class="contact section">
 
+<<<<<<< HEAD
   <!-- Vendor JS Files -->
   <script src="{{asset('public/QuickStart/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('public/QuickStart/assets/vendor/php-email-form/validate.js')}}"></script>
@@ -481,6 +503,151 @@
 
   <!-- Main JS File -->
   <script src="{{asset('public/QuickStart/assets/js/main.js')}}"></script>
+=======
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Hubungi Kami di Detail Kontak berikut</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-12">
+        <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+          <a href="https://maps.app.goo.gl/6Vwh8mon2RuDHMZo8" target="_blank" style="text-decoration: none; color: inherit;">
+            <i class="bi bi-geo-alt"></i>
+          </a>
+          <h3>Alamat</h3>
+          <p>
+            <a href="https://maps.app.goo.gl/6Vwh8mon2RuDHMZo8" target="_blank" style="text-decoration: none; color: inherit;">
+              Jalan Pemuda, Kelurahan Koto Panjang, Kecamatan Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat 27122
+            </a>
+          </p>
+        </div>
+      </div><!-- End Info Item -->
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+          <a href="https://wa.me/6285263352728?text=Halo%20kak%20saya%20tertarik%20untuk%20booking%20perjalanan%20kami,%20bisa%20beri%20detail%20lebih%20lanjut?" target="_blank" style="text-decoration: none; color: inherit;">
+            <i class="bi bi-telephone"></i>
+          </a>
+          <h3>Nomor yang bisa dihubungi</h3>          
+          <p><a href="https://wa.me/6285263352728" target="_blank" style="text-decoration: none; color: inherit;">+62852 6335 2728</a></p>
+          <p><a href="https://wa.me/6285382616185" target="_blank" style="text-decoration: none; color: inherit;">+62853 8261 6185</a></p>
+        </div>
+      </div><!-- End Info Item -->
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+          <a href="https://www.instagram.com/iqbaltransgroup/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <h3>Instagram</h3>
+          <p>iqbaltransgroup</p>
+        </div>
+      </div><!-- End Info Item -->
+
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+          <a href="https://www.facebook.com/people/Iqbal-TransGroup/100082727473527/" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <h3>Facebook</h3>
+          <p>Iqbal Transgroup</p>
+        </div>
+      </div><!-- End Info Item -->
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+          <a href="https://www.tiktok.com/@iqbaltransgroup" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <h3>TikTok</h3>
+          <p>iqbaltransgroup</p>
+        </div>
+      </div><!-- End Info Item -->
+
+
+    </div>
+
+    <div class="row gy-4 mt-1">
+      <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.68230339125!2d100.40273169999999!3d-0.4731064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd5254c18bc97e5%3A0xd0e99ab61555be5!2sIqbal&#39;s%20Garage!5e0!3m2!1sid!2sid!4v1736172904740!5m2!1sid!2sid" 
+          width="600" 
+          height="450" 
+          style="border:0; width: 100%; height: 400px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade" 
+          frameborder="0">
+        </iframe>
+      </div><!-- End Google Maps -->
+    </div>
+
+
+</section><!-- /Contact Section -->
+
+</main>
+
+<!-- Modal Konfirmasi -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Form Submitted</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Terima kasih! Form Booking Anda telah berhasil dikirim. Tim CS kami akan segera menghubungi Anda.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer id="footer" class="footer position-relative light-background">
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">IqbalTransGroup</strong><span>All Rights Reserved</span></p>
+    <div class="credits">
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </div>
+
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<script>
+  // Fungsi untuk menampilkan modal setelah form berhasil dikirim
+  document.addEventListener('DOMContentLoaded', function () {
+    @if(session('success'))
+      var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'), {});
+      confirmationModal.show();
+    @endif
+  });
+</script>
+
+<!-- Vendor JS Files -->
+<script src="{{asset('QuickStart/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('QuickStart/assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{asset('QuickStart/assets/vendor/aos/aos.js')}}"></script>
+<script src="{{asset('QuickStart/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+<script src="{{asset('QuickStart/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+<!-- Main JS File -->
+<script src="{{asset('QuickStart/assets/js/main.js')}}"></script>
+>>>>>>> 218b0d3f45978e47dc0989a92636e42958981684
 
 </body>
 
