@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{asset('QuickStart/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('QuickStart/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('public/QuickStart/assets/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('public/QuickStart/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,14 +18,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{asset('QuickStart/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('QuickStart/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{asset('QuickStart/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{asset('QuickStart/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{asset('QuickStart/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="{{asset('public/QuickStart/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('public/QuickStart/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('public/QuickStart/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('public/QuickStart/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('public/QuickStart/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="{{asset('QuickStart/assets/css/main.css')}}" rel="stylesheet">
+  <link href="{{asset('public/QuickStart/assets/css/main.css')}}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: QuickStart
@@ -42,7 +42,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="{{asset('QuickStart/assets/img/logo.png')}}" alt="">
+        <img src="{{asset('public/QuickStart/assets/img/logo.png')}}" alt="">
         <h1 class="sitename">ITG</h1>
       </a>
 
@@ -65,7 +65,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <div class="hero-bg">
-        <img src="{{asset('QuickStart/assets/img/hero-bg-light.webp')}}" alt="">
+        <img src="{{asset('public/QuickStart/assets/img/hero-bg-light.webp')}}" alt="">
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
@@ -73,9 +73,9 @@
           <p data-aos="fade-up" data-aos-delay="100">Teman Perjalanan Wisata Anda<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="{{ route('booking2') }}" class="btn-get-started">Booking Sekarang</a>
-            <a href="h{{asset('QuickStart/assets/img/video1.mp4')}}" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Tonton Video</span></a>
+            <a href="h{{asset('public/QuickStart/assets/img/video1.mp4')}}" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Tonton Video</span></a>
           </div>
-          <img src="{{asset('QuickStart/assets/img/IMG_9255-removebg.png')}}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{{asset('public/QuickStart/assets/img/IMG_9255-removebg.png')}}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
 
@@ -151,11 +151,11 @@
               <div class="row g-3 justify-content-center">
                 <!-- Gambar 1 -->
                 <div class="col-md-6 col-12">
-                  <img src="{{asset('QuickStart/assets/img/bus1.png')}}" class="img-fluid" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/bus1.png')}}" class="img-fluid" alt="">
                 </div>
                 <!-- Gambar 2 -->
                 <div class="col-md-6 col-12">
-                  <img src="{{asset('QuickStart/assets/img/IMG_9257.PNG')}}" class="img-fluid" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/IMG_9257.PNG')}}" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -314,7 +314,7 @@
                  Pelayanannya luar biasa! Kursinya nyaman, dan bus selalu tepat waktu. Saya merasa sangat aman selama perjalanan. Terima kasih atas pengalaman yang menyenangkan!
                 </p>
                 <div class="profile mt-auto">
-                  <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
                   <h3>Sumarni</h3>
                   <h4>Ibu-Ibu Pengajuan Nurul Ikhlas</h4>
                 </div>
@@ -330,7 +330,7 @@
                   Perjalanan bersama bus ini sangat nyaman, membuat kami bisa menikmati waktu bersama keluarga besar tanpa khawatir soal kenyamanan. Staf bus yang ramah dan fasilitas lengkap membuat perjalanan kami terasa lancar dan menyenangkan. Dengan kapasitas bus yang luas dan perjalanan yang mulus, acara tombongan kami pun menjadi semakin berkesan.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
                   <h3>Desi Fitriani</h3>
                   <h4>Aktivis</h4>
                 </div>
@@ -346,7 +346,7 @@
                   Saya menggunakan layanan ini untuk perjalanan keluarga besar kami. Semua berjalan lancar, dan stafnya sangat ramah serta membantu. Pegawai kami pun merasa nyaman sepanjang perjalanan.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
                   <h3>Jena Suryadi</h3>
                   <h4>Kepala BPS Kota Padang Panjang</h4>
                 </div>
@@ -362,7 +362,7 @@
                   Layanan pelanggan sangat responsif! Saya sempat ingin mengubah jadwal, dan prosesnya sangat mudah. Busnya juga tepat waktu, jadi saya tidak khawatir terlambat sampai tujuan.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
                   <h3>Mak Syukur</h3>
                   <h4>Pegawai Dinas Kebersihan</h4>
                 </div>
@@ -378,7 +378,7 @@
                  Saya sudah beberapa kali menggunakan layanan bus ini untuk perjalanan acara family gathering kantor kami, dan saya sangat puas. Busnya selalu datang tepat waktu, dan pengemudi sangat profesional dalam berkendara. Saya merasa aman meskipun harus melalui rute yang cukup panjang. Selain itu, fasilitas di dalam bus seperti Wi-Fi dan colokan listrik benar-benar membantu saya untuk tetap produktif selama perjalanan. Saya juga terkesan dengan kebersihan bus dan keramahan kru di dalamnya. Sangat direkomendasikan untuk perjalanan bisnis maupun keluarga besar.
                 </p>
                 <div class="profile mt-auto">
-                  <img src="{{asset('QuickStart/assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
+                  <img src="{{asset('public/QuickStart/assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
                   <h3>Khairul</h3>
                   <h4>Komisioner Bawaslu Kota Padang Panjang</h4>
                 </div>
@@ -473,14 +473,14 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="{{asset('QuickStart/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('QuickStart/assets/vendor/php-email-form/validate.js')}}"></script>
-  <script src="{{asset('QuickStart/assets/vendor/aos/aos.js')}}"></script>
-  <script src="{{asset('QuickStart/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-  <script src="{{asset('QuickStart/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{asset('public/QuickStart/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('public/QuickStart/assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{asset('public/QuickStart/assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{asset('public/QuickStart/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{asset('public/QuickStart/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
   <!-- Main JS File -->
-  <script src="{{asset('QuickStart/assets/js/main.js')}}"></script>
+  <script src="{{asset('public/QuickStart/assets/js/main.js')}}"></script>
 
 </body>
 
