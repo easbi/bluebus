@@ -242,7 +242,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                             <img class="img-profile rounded-circle"
-                            src="{{asset('sbadmin/img/adm1.png')}}">
+                            src="{{asset('public/sbadmin/img/adm1.png')}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -325,14 +325,14 @@
 
 
 <!-- Bootstrap core JavaScript-->
-<script src="{{asset('sbadmin/vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('public/sbadmin/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('public/sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="{{asset('sbadmin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<script src="{{asset('public/sbadmin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="{{asset('sbadmin/js/sb-admin-2.min.js')}}"></script>
+<script src="{{asset('public/sbadmin/js/sb-admin-2.min.js')}}"></script>
 
 @stack('scripts')
 

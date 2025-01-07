@@ -4,7 +4,7 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Transaksi SPJ</h1>
 
-<link href="{{asset('sbadmin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/sbadmin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -78,9 +78,9 @@
 
 @push('scripts')
 <!-- Page level plugins -->
-<script src="{{asset('sbadmin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('sbadmin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/sbadmin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('public/sbadmin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
 <!-- Page level custom scripts -->
-<script src="{{asset('sbadmin/js/demo/datatables-demo.js')}}"></script>
+<script src="{{asset('public/sbadmin/js/demo/datatables-demo.js')}}"></script>
 @endpush

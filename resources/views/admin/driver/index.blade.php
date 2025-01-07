@@ -178,5 +178,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="{{asset('sbadmin/js/demo/chart-area-demo.js')}}"></script>
+<script src="{{asset('public/sbadmin/js/demo/chart-area-demo.js')}}"></script>
 @endpush
