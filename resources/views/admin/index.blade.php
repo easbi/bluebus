@@ -2,6 +2,75 @@
 @section('content')
 <!-- DataTales Example -->
 <!-- Page Heading -->
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+
+<!-- Content Row -->
+<div class="row">
+    <h1 class="h3 mb-4 text-gray-800">Kalender Booking</h1>
+    <div class="col-md-12">
+        <div id="calendar"></div>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'id', // Setel locale menjadi bahasa Indonesia
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        buttonText: { // Menyesuaikan teks tombol
+            today: 'Hari Ini',
+            month: 'Bulan',
+            week: 'Minggu',
+            day: 'Hari'
+        },
+        events: function (fetchInfo, successCallback, failureCallback) {
+            axios.get('booking2/api/bookings')
+                .then(response => {
+                    // Sesuaikan data untuk FullCalendar
+                    const events = response.data.map(event => {
+                        // Tambahkan 1 hari ke 'end' hanya untuk tampilan
+                        const adjustedEnd = new Date(event.end);
+                        adjustedEnd.setDate(adjustedEnd.getDate() + 1);
+                        return {
+                            ...event,
+                            end: adjustedEnd.toISOString().split('T')[0] // Format kembali ke 'YYYY-MM-DD'
+                        };
+                    });
+
+                    successCallback(events);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    failureCallback(error);
+                });
+        },
+        eventClick: function (info) {
+            const start = new Date(info.event.start).toLocaleDateString();
+            const end = info.event.end
+                ? new Date(info.event.end).toLocaleDateString()
+                : 'Tidak tersedia';
+            const description = info.event.extendedProps.description || 'Deskripsi tidak tersedia';
+
+            alert(`Deskripsi: ${description}`);
+        }
+    });
+
+    calendar.render();
+});
+
+    </script>
+</div>
+
+<!-- Content Row -->
+
+<br>
 <h1 class="h3 mb-4 text-gray-800">Transaksi Booking</h1>
 
 <link href="{{asset('public/sbadmin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
@@ -95,4 +164,8 @@
 
 <!-- Page level custom scripts -->
 <script src="{{asset('public/sbadmin/js/demo/datatables-demo.js')}}"></script>
+
+<!-- Full Calender JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 @endpush

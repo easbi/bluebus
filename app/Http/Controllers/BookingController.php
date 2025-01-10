@@ -30,6 +30,19 @@ class BookingController extends Controller
         return view('admin.index', compact('booking'))->with('i');
     }
 
+    public function getBooking()
+    {
+        $bookings = Booking::select([
+            'id',
+            'nama_pemesan as title',
+            'tanggal_penjemputan as start',
+            'tanggal_kembali as end',
+            \DB::raw("CONCAT('Lokasi jemput: ', lokasi_jemput, ', Lokasi tujuan: ', lokasi_tujuan) as description")
+        ])->get();
+
+        return response()->json($bookings);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,6 +52,11 @@ class BookingController extends Controller
     {
         $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
         return view('home.reservation', compact('bus_type'));
+    }
+
+    public function kalender()
+    {
+        return view('home.kalender');
     }
 
     public function createbyDriver()

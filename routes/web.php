@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin', [BookingController::class, 'index']);
 Route::get('/createbyDriver', [BookingController::class, 'createbyDriver']);
 Route::get('/booking2', [BookingController::class, 'create'])->name('booking2');;
+Route::get('/booking2/api/bookings', [BookingController::class, 'getBooking'])->name('getBooking');
+Route::get('/kalender', [BookingController::class, 'kalender'])->name('kalender');;
 Route::resource('booking', BookingController::class);
 
 Route::post('/spj/{booking}', [SpjController::class, 'store2'])->name('spj.store2');
