@@ -23,7 +23,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $user = Auth::user();
+
+                // Logika pengalihan berdasarkan ID
+                if ($user->id == 1) {
+                    return redirect('/admin'); // ID 1 diarahkan ke laman admin
+                }
+
+                return redirect('/driver'); // Selain ID 1 diarahkan ke laman driver
             }
         }
 

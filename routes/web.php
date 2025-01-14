@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SpjController;
+use App\Http\Controllers\DriverController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,14 +39,19 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin', [BookingController::class, 'index']);
 Route::get('/createbyDriver', [BookingController::class, 'createbyDriver']);
-Route::get('/booking2', [BookingController::class, 'create'])->name('booking2');;
+Route::get('/booking2', [BookingController::class, 'create'])->name('booking2');
 Route::get('/booking2/api/bookings', [BookingController::class, 'getBooking'])->name('getBooking');
 Route::get('/kalender', [BookingController::class, 'kalender'])->name('kalender');;
 Route::resource('booking', BookingController::class);
 
 Route::post('/spj/{booking}', [SpjController::class, 'store2'])->name('spj.store2');
 Route::get('/spj/driver', [SpjController::class, 'index2'])->name('spj.driver');
+Route::get('/export/excel', [SpjController::class, 'exportToExcel'])->name('spj.export.excel');
 Route::resource('spj', SpjController::class);
+
+
+Route::get('/driver', [DriverController::class, 'index'])->name('driver.index');
+Route::get('/driver/kalenderBooking', [DriverController::class, 'kalenderBooking'])->name('driver.kalenderBooking');
 
 require __DIR__.'/auth.php';
 

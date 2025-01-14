@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+
 class SpjController extends Controller
 {
     public function __construct()
@@ -25,7 +31,7 @@ class SpjController extends Controller
         if (auth()->user()->id != 1) {
             return redirect('/')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
-        $spj =  DB::table('spj')->leftjoin('users', 'spj.created_by', 'users.id')->select('spj.*', 'users.name')->orderBy('id', 'desc')->get();
+        $spj =  DB::table('spj')->leftjoin('users', 'spj.driver_id', 'users.id')->select('spj.*', 'users.name')->orderBy('id', 'desc')->get();
         
         return view('admin.spj.index', compact('spj'))->with('i');
     }
@@ -182,6 +188,102 @@ class SpjController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('spj.index')
                          ->with('success', 'Data SPJ berhasil diperbarui.');
+    }
+
+    public function exportToExcel()
+    {
+         $spjData = DB::table('spj')
+            ->leftjoin('users', 'spj.driver_id', 'users.id')
+            ->leftjoin('bus_type', 'bus_type.id', 'spj.bus_id')
+            ->select('spj.*', 'users.name as driver_name', 'bus_type.armada AS armada')
+            ->get();
+
+        // Buat Spreadsheet baru
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Atur header kolom
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Booking ID');
+        $sheet->setCellValue('C1', 'No SPJ');
+        $sheet->setCellValue('D1', 'Tanggal SPJ');
+        $sheet->setCellValue('E1', 'Nama Pemesan');
+        $sheet->setCellValue('F1', 'No HP/WA');
+        $sheet->setCellValue('G1', 'Lokasi Tujuan');
+        $sheet->setCellValue('H1', 'Lokasi Jemput');
+        $sheet->setCellValue('I1', 'Tanggal Penjemputan');
+        $sheet->setCellValue('J1', 'Tanggal Kembali');
+        $sheet->setCellValue('K1', 'Driver');
+        $sheet->setCellValue('L1', 'Jenis Bus');
+        $sheet->setCellValue('M1', 'Lama Sewa');
+        $sheet->setCellValue('N1', 'Tarif Sewa');
+        $sheet->setCellValue('O1', 'Down Payment');
+        $sheet->setCellValue('P1', 'Jumlah Setoran');
+        $sheet->setCellValue('Q1', 'Tanggal Setoran');
+
+        // Gaya untuk header
+        $headerStyle = [
+            'font' => [
+                'bold' => true,
+                'color' => ['rgb' => 'FFFFFF'],
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => '4CAF50'],
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'vertical' => Alignment::VERTICAL_CENTER,
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['rgb' => '000000'],
+                ],
+            ],
+        ];
+
+        $sheet->getStyle('A1:Q1')->applyFromArray($headerStyle);
+
+        // Masukkan data ke baris berikutnya
+        $row = 2;
+        $i = 1;
+        foreach ($spjData as $spj) {
+            $sheet->setCellValue("A{$row}", $i);
+            $sheet->setCellValue("B{$row}", $spj->booking_id);
+            $sheet->setCellValue("C{$row}", $spj->no_spj);
+            $sheet->setCellValue("D{$row}", $spj->tgl_spj);
+            $sheet->setCellValue("E{$row}", $spj->nama_pemesan);
+            $sheet->setCellValue("F{$row}", $spj->no_hp_wa);
+            $sheet->setCellValue("G{$row}", $spj->lokasi_tujuan);
+            $sheet->setCellValue("H{$row}", $spj->lokasi_jemput);
+            $sheet->setCellValue("I{$row}", $spj->tanggal_penjemputan);
+            $sheet->setCellValue("J{$row}", $spj->tanggal_kembali);
+            $sheet->setCellValue("K{$row}", $spj->driver_name);
+            $sheet->setCellValue("L{$row}", $spj->armada);
+            $sheet->setCellValue("M{$row}", $spj->lama_sewa);
+            $sheet->setCellValue("N{$row}", $spj->tarif_sewa);
+            $sheet->setCellValue("O{$row}", $spj->down_payment);
+            $sheet->setCellValue("P{$row}", $spj->jml_setoran);
+            $sheet->setCellValue("Q{$row}", $spj->tgl_setoran);
+            $row++;
+            $i++;
+        }
+
+        // Atur ukuran kolom otomatis
+        foreach (range('A', 'Q') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);
+        }
+
+        // Berikan nama file dan download
+        $fileName = 'spj_data.xlsx';
+        $writer = new Xlsx($spreadsheet);
+
+        // Set response untuk download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename=\"{$fileName}\"");
+        $writer->save('php://output');
+        exit;
     }
 
     /**

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,23 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
+
+    /**
+     * Get the route that should be used after login.
+     *
+     * @return string
+     */
+    public static function redirectAfterLogin()
+    {
+        $user = Auth::user();
+
+        // Check user ID or other conditions
+        if ($user && $user->id == 1) {
+            return '/admin'; // Redirect to admin dashboard
+        }
+
+        return '/driver'; // Redirect to driver dashboard
+    }
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

@@ -25,11 +25,28 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        // Validasi login pengguna
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        $request->session()->regenerate();
+        // Cek kredensial pengguna dan login
+        if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+            $user = Auth::user();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+            // Cek id pengguna dan arahkan ke halaman yang sesuai
+            if ($user->id == 1) {
+                return redirect()->route('booking.index');  // Arahkan ke halaman admin
+            } else {
+                return redirect()->route('driver.index');  // Arahkan ke halaman driver
+            }
+        }
+
+        // Jika login gagal, kembalikan ke halaman login dengan pesan error
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**

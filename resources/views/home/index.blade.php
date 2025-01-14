@@ -459,13 +459,33 @@
 
   <footer id="footer" class="footer position-relative light-background">
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">IqbalTransGroup</strong><span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">IqbalTransGroup</strong><span>All Rights Reserved</span></p>
+        <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
 
-  </footer>
+        <!-- Cek apakah pengguna sudah login -->
+        @auth
+            <div class="credits">
+                Logged in as <strong>{{ Auth::user()->name }}</strong>
+            </div>
+            <div class="credits">
+                Laman Crew 
+                @if(Auth::user()->id == 1)
+                    <a href="{{ route('booking.index') }}">Klik Di sini</a>
+                @else
+                    <a href="{{ route('driver.index') }}">Klik Di sini</a>
+                @endif
+            </div>
+        @else
+            <div class="credits">
+                Login for <a href="{{ route('login') }}">The Crew</a>
+            </div>
+        @endauth
+    </div>
+</footer>
+
+
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
