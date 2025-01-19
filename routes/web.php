@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/admin', [BookingController::class, 'index']);
-Route::get('/createbyDriver', [BookingController::class, 'createbyDriver']);
+Route::get('/createbyDriver', [BookingController::class, 'createbyDriver'])->name('booking.bydriver');
 Route::get('/booking2', [BookingController::class, 'create'])->name('booking2');
 Route::get('/booking2/api/bookings', [BookingController::class, 'getBooking'])->name('getBooking');
 Route::get('/kalender', [BookingController::class, 'kalender'])->name('kalender');;

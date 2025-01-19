@@ -38,8 +38,7 @@ class DriverController extends Controller
     public function kalenderBooking()
     {
         $booking =  DB::table('booking')->leftjoin('users', 'booking.created_by', 'users.id')->select('booking.*', 'users.name')->orderBy('id', 'desc')->get();
-
-        // dd($booking);
+        
         return view('driver.kalenderBooking', compact('booking'))->with('i');
     }
 }

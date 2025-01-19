@@ -84,6 +84,8 @@ class BookingController extends Controller
             'jenis_bus' => 'nullable',
         ]);
 
+        $createdBy = Auth::check() ? Auth::user()->id : null;
+
         $result = Booking::create([
             'nama_pemesan' => $request->nama_pemesan,
             'no_hp_wa' => $request->no_hp_wa,
@@ -91,12 +93,17 @@ class BookingController extends Controller
             'lokasi_jemput' => $request->lokasi_jemput,
             'tanggal_penjemputan' => $request->tanggal_penjemputan,
             'tanggal_kembali' => $request->tanggal_kembali,
-            'created_by' => Auth::check() ? Auth::user()->id : null,
+            'created_by' => $createdBy,
             'tipe_bus' => $request->jenis_bus,
         ]);
 
-        return redirect()->route('home')
-                        ->with('success','Rule Pemeriksaan Sukses Ditambahkan!');
+        if (is_null($createdBy)) {
+            return redirect()->route('home')
+                            ->with('success', 'Bookingan Sukses Ditambahkan!');
+        } else {
+            return redirect()->route('driver.kalenderBooking')
+                            ->with('success', 'Bookingan Sukses Ditambahkan!');
+        }
     }
 
     /**

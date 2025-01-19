@@ -85,17 +85,30 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="card-body">               
         <!-- Menampilkan pesan sukses jika ada -->
         @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses',
+                        text: '{{ session('success') }}',
+                    });
+                });
+            </script>
         @endif
         
         <!-- Menampilkan pesan error jika ada -->
         @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: '{{ session('error') }}',
+                    });
+                });
+            </script>
         @endif
+
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -146,4 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- Full Calender JS -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
