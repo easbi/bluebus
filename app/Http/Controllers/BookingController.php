@@ -129,7 +129,7 @@ class BookingController extends Controller
         if (auth()->user()->id !== 1) {
             return redirect('/')->with('error', 'Anda tidak memiliki akses untuk mengedit data ini.');
         }
-        $users = User::select('id', 'name')->get();
+        $users = User::select('id', 'name')->where('status', '!=', 'NON-AKTIF')->get();
         $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
 
         // dd($booking);

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -25,6 +26,36 @@ class ProfileController extends Controller
         $drivers = User::all(); 
         return view('admin.driver', compact('drivers'))->with('i');;
     }
+
+
+    public function create()
+    {
+        return view('admin.drivercreate');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'no_hp_wa' => 'nullable|string|max:15',
+            'tgl_bergabung' => 'nullable|date',
+            'status_driver' => 'required|in:AKTIF,NON-AKTIF',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_hp_wa' => $request->no_hp_wa,
+            'tgl_bergabung' => $request->tgl_bergabung,
+            'status_driver' => $request->status_driver,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('admin.driver')->with('success', 'Driver berhasil ditambahkan.');
+    }
+
 
     /**
      * Display the user's profile form.

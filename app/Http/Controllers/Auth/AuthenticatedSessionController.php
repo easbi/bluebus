@@ -35,11 +35,18 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
             $user = Auth::user();
 
-            // Cek id pengguna dan arahkan ke halaman yang sesuai
+            
             if ($user->id == 1) {
-                return redirect()->route('booking.index');  // Arahkan ke halaman admin
+                return redirect()->route('booking.index');  
             } else {
-                return redirect()->route('driver.index');  // Arahkan ke halaman driver
+                if ($user->status_driver === 'NON-AKTIF') {
+                    Auth::logout();
+                    return back()->withErrors([
+                        'email' => 'Akun Anda tidak aktif. Silakan hubungi admin/bu dwi.',
+                    ]);
+                } else {
+                    return redirect()->route('driver.index'); 
+                }
             }
         }
 

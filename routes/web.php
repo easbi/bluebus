@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/admin/driverstore', [ProfileController::class, 'store'])->name('admin.driverstore');
+Route::get('/admin/drivercreate', [ProfileController::class, 'create'])->name('admin.drivercreate');
 Route::get('/admin/driver', [ProfileController::class, 'index'])->name('admin.driver');
 Route::get('/admin/driver/{id}/edit', [ProfileController::class, 'editAdmin'])->name('admin.driveredit');
 Route::patch('/admin/driver/{id}', [ProfileController::class, 'updateAdmin'])->name('admin.driverupdate');

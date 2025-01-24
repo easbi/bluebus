@@ -130,7 +130,7 @@ class SpjController extends Controller
         }
 
         $sprintj = Sprintj::where('id', $id)->first();
-        $users = User::select('id', 'name')->get();
+        $users = User::select('id', 'name')->where('status', '!=', 'NON-AKTIF')->get();
         $bus_type = DB::table('bus_type')->select('id', 'armada')->get();
 
         return view('admin.spj.edit', compact('sprintj', 'users', 'bus_type'));
