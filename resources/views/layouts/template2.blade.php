@@ -141,6 +141,17 @@
                                         </div>
                                     </div>
                                     <div>
+                                        <div class="small text-gray-500">24 Januari 2024</div>
+                                        <span class="">Admin Sudah Bisa Mengelola Driver, Men Aktif/Non-Aktifkan Driver, Serta Perbaikan Pemilihan Driver di SPJ dan Edit Bookingan.</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
                                         <div class="small text-gray-500">19 Januari 2024</div>
                                         <span class="">Driver sudah bisa menginput booking di laman driver. Silahkan akses menu "Catat Bookingan" yang ada di samping.</span>
                                     </div>
