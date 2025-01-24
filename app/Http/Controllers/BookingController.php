@@ -33,12 +33,13 @@ class BookingController extends Controller
     public function getBooking()
     {
         $bookings = Booking::select([
-            'id',
-            'nama_pemesan as title',
-            'tanggal_penjemputan as start',
-            'tanggal_kembali as end',
-            \DB::raw("CONCAT('Lokasi jemput: ', lokasi_jemput, ', Lokasi tujuan: ', lokasi_tujuan) as description")
-        ])->get();
+            'booking.id',
+            'booking.nama_pemesan as title',
+            'booking.tanggal_penjemputan as start',
+            'booking.tanggal_kembali as end',
+            \DB::raw("CONCAT('Lokasi jemput: ', booking.lokasi_jemput, ', Lokasi tujuan: ', booking.lokasi_tujuan) as description"),
+            'bus_type.armada'
+        ])->join('bus_type', 'booking.tipe_bus', '=', 'bus_type.id')->get();
 
         return response()->json($bookings);
     }
