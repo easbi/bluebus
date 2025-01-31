@@ -37,9 +37,19 @@ class BookingController extends Controller
             'booking.nama_pemesan as title',
             'booking.tanggal_penjemputan as start',
             'booking.tanggal_kembali as end',
-            \DB::raw("CONCAT('Lokasi jemput: ', booking.lokasi_jemput, ', Lokasi tujuan: ', booking.lokasi_tujuan) as description"),
+            \DB::raw("CONCAT(booking.tanggal_penjemputan, ' hingga ', booking.tanggal_kembali) as tgl_pemesanan"),            
+            'booking.lokasi_jemput as lokasi_jemput',
+            'booking.lokasi_tujuan as lokasi_tujuan',
             'bus_type.armada'
         ])->join('bus_type', 'booking.tipe_bus', '=', 'bus_type.id')->get();
+
+        foreach ($bookings as $booking) {
+            if (!$booking->end) {
+                $booking->end = $booking->start; // Jika end kosong, gunakan start
+            } else {
+                $booking->end = date('Y-m-d', strtotime($booking->end . ' +1 day')); // Tambah 1 hari ke end
+            }
+        }
 
         return response()->json($bookings);
     }
