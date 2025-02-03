@@ -25,6 +25,55 @@
     </div>
 </div>
 
+<!-- Modal untuk membuat SPJ -->
+<div class="modal fade" id="spjModal" tabindex="-1" role="dialog" aria-labelledby="spjModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="spjModalLabel">Buat SPJ untuk <span id="pemesanName"></span> ?</h5> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form untuk membuat SPJ -->
+                <form id="spjForm" action="" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-success">Buat SPJ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Konfirmasi untuk SPJ yang sudah ada -->
+<div class="modal fade" id="confirmSpjModal" tabindex="-1" role="dialog" aria-labelledby="confirmSpjModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmSpjModalLabel">Konfirmasi SPJ untuk Booking ID: <span id="confirmBookingId"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin membuat SPJ lagi untuk booking ini?</p>
+                <p>SPJ yang sudah ada: <span id="existingSpjCount"></span> SPJ.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <form id="confirmSpjForm" action="" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-success">Ya, Buat SPJ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- Content Row -->
 <div class="row">
     <h1 class="h3 mb-4 text-gray-800">Kalender Booking</h1>
@@ -156,21 +205,18 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
                             </form>
-                            
-                            <!-- Cek apakah booking_id sudah ada di tabel SPJ -->
+
                             @php
                                 $existingSpj = \App\Models\Sprintj::where('booking_id', $booking->id)->first();
                             @endphp
-
-                            <!-- Jika tidak ada data di tabel SPJ, tampilkan tombol Teruskan ke SPJ -->
                             @if (!$existingSpj)
-                                <form action="{{ route('spj.store2', $booking->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-warning">Buat SPJ</button>
-                                </form>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#spjModal" data-pemesan-name="{{ $booking->nama_pemesan }}" data-booking-id="{{ $booking->id }}" >
+                                    Buat SPJ
+                                </button>
                             @else
-                                <!-- Tampilkan pesan jika sudah ada data di tabel SPJ -->
-                                <span class="text-danger">SPJ sudah dibuat untuk booking ini</span>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#confirmSpjModal" data-booking-id="{{ $booking->id }}" data-spj-count="{{ $booking->total_spj }}">
+                                    {{ $booking->total_spj }} SPJ
+                                </button>
                             @endif                                
                         </td>
                     </tr>
@@ -196,4 +242,35 @@
 <!-- Full Calender JS -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // Modal untuk "Buat SPJ"
+    $('#spjModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var bookingId = button.data('booking-id');
+        var pemesanName = button.data('pemesan-name');
+
+        var modal = $(this);
+        modal.find('.modal-title #pemesanName').text(pemesanName);
+        var formAction = "{{ route('spj.store2', ':booking_id') }}";
+        formAction = formAction.replace(':booking_id', bookingId);
+        modal.find('#spjForm').attr('action', formAction); 
+    });
+
+    // Modal konfirmasi untuk SPJ yang sudah ada
+    $('#confirmSpjModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); 
+        var bookingId = button.data('booking-id');
+        var spjCount = button.data('spj-count'); 
+
+        var modal = $(this);
+        modal.find('.modal-title #confirmBookingId').text(bookingId); 
+        modal.find('#existingSpjCount').text(spjCount);
+
+        // Set form action untuk konfirmasi membuat SPJ
+        var formAction = "{{ route('spj.store2', ':booking_id') }}";
+        formAction = formAction.replace(':booking_id', bookingId);
+        modal.find('#confirmSpjForm').attr('action', formAction); 
+    });
+</script>
+
 @endpush

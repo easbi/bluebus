@@ -6,6 +6,7 @@ use App\Models\Sprintj;
 use App\Models\Booking;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,15 +75,8 @@ class SpjController extends Controller
      */
     public function store2(Booking $booking)
     {
-        // Cek apakah booking_id sudah ada di tabel Sprintj
-        $existingTransaction = Sprintj::where('booking_id', $booking->id)->first();
-
-        if ($existingTransaction) {
-            // Jika sudah ada, berikan pesan error dan kembali ke halaman sebelumnya
-            return redirect()->back()->with('error', 'SPJ data ini sudah ada, tidak perlu dibuat lagi. Silahkan cek tabel SPJ!');
-        }
-        // Buat nomor SPJ unik, misalnya dengan format SPJ-{timestamp}-{id booking}
-        $noSpj = 'SPJ-' . time() . '-' . $booking->id;
+        // Buat nomor SPJ unik
+        $noSpj = "SPJ-".Carbon::now()->format('dmY')."-{$booking->id}-".(Sprintj::where('booking_id', $booking->id)->count()+1);
 
         // Salin data dari tabel booking ke tabel transaksi
         $transaksi = Sprintj::create([
@@ -96,7 +90,7 @@ class SpjController extends Controller
             'tanggal_penjemputan' => $booking->tanggal_penjemputan,
             'tanggal_kembali' => $booking->tanggal_kembali,            
             'bus_id' => $booking->tipe_bus,
-            'driver_id' => $booking->created_by,
+            'driver_id' => $booking->created_by ?? 1,
             'lama_sewa' => (strtotime($booking->tanggal_kembali) - strtotime($booking->tanggal_penjemputan)) / (60 * 60 * 24) + 1,
             'created_by' => Auth::user()->id,
         ]);

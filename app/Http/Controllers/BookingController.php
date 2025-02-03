@@ -24,7 +24,20 @@ class BookingController extends Controller
         if (auth()->user()->id !== 1) {
             return redirect('/')->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
-        $booking =  DB::table('booking')->leftjoin('users', 'booking.created_by', 'users.id')->select('booking.*', 'users.name')->orderBy('id', 'desc')->get();
+        $booking =  DB::table('booking')
+            ->leftjoin('users', 'booking.created_by', 'users.id')            
+            ->leftJoinSub(
+                DB::table('spj')
+                    ->select('booking_id', DB::raw('COUNT(*) as total_spj'))
+                    ->groupBy('booking_id'),
+                'spj',
+                'booking.id',
+                '=',
+                'spj.booking_id'
+            )
+            ->select('booking.*', 'users.name', DB::raw('COALESCE(spj.total_spj, 0) as total_spj'))
+            ->orderBy('booking.id', 'desc')
+            ->get();
 
         // dd($booking);
         return view('admin.index', compact('booking'))->with('i');
