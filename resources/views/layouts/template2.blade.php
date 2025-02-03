@@ -126,7 +126,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3</span>
+                                <span class="badge badge-danger badge-counter">6</span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -141,7 +141,29 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">24 Januari 2024</div>
+                                        <div class="small text-gray-500">3 Februari 2025</div>
+                                        <span class="">Kelender Booking sudah menampilkan Armada, dan ketika diklik akan menampilkan rincian pesanan. Namun Basis Data masih menggunakan Tabel Booking. (Under Construction, mata sipit unjuk gigi, ntar ya sikit lagi)</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">3 Februari 2025</div>
+                                        <span class="">Proses Pembuatan SPJ dari Tabel Booking sudah ditambahkan konfirmasi, dan bisa membuat banyak SPJ dari 1 data Booking. Untuk Data yang tidak ada Pengambilan Orderan maka akan di defultkan ke Nama Administrator.</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">24 Januari 2025</div>
                                         <span class="">Admin Sudah Bisa Mengelola Driver, Men Aktif/Non-Aktifkan Driver, Serta Perbaikan Pemilihan Driver di SPJ dan Edit Bookingan.</span>
                                     </div>
                                 </a>
@@ -152,7 +174,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">19 Januari 2024</div>
+                                        <div class="small text-gray-500">19 Januari 2025</div>
                                         <span class="">Driver sudah bisa menginput booking di laman driver. Silahkan akses menu "Catat Bookingan" yang ada di samping.</span>
                                     </div>
                                 </a>
@@ -163,7 +185,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">15 Januari 2019</div>
+                                        <div class="small text-gray-500">15 Januari 2025</div>
                                         Sudah tersedia Laman Khusus Driver.
                                     </div>
                                 </a>
@@ -174,7 +196,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">15 Januari 2019</div>
+                                        <div class="small text-gray-500">15 Januari 2025</div>
                                         Tersedianya tombol Logout di sebelah kanan atas dari menu photo profile.
                                     </div>
                                 </a>
