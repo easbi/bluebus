@@ -98,7 +98,7 @@
                 day: 'Hari'
             },
             events: function (fetchInfo, successCallback, failureCallback) {
-                axios.get('spj/api/bookings')
+                axios.get('booking2/api/bookings')
                     .then(response => {
                         const events = response.data.map(event => {
                             return {

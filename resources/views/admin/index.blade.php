@@ -10,7 +10,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="bookingModalLabel">Detail Booking</h5>
+                <h5 class="modal-title" id="bookingModalLabel">Detail SPJ</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -76,7 +76,7 @@
 
 <!-- Content Row -->
 <div class="row">
-    <h1 class="h3 mb-4 text-gray-800">Kalender Booking</h1>
+    <h1 class="h3 mb-4 text-gray-800">Kalender dari SPJ</h1>
     <div class="col-md-12">
         <div id="calendar"></div>
     </div>

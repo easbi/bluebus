@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\User;
+use App\Models\Sprintj;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -45,16 +46,16 @@ class BookingController extends Controller
 
     public function getBooking()
     {
-        $bookings = Booking::select([
-            'booking.id',
-            'booking.nama_pemesan as title',
-            'booking.tanggal_penjemputan as start',
-            'booking.tanggal_kembali as end',
-            \DB::raw("CONCAT(booking.tanggal_penjemputan, ' hingga ', booking.tanggal_kembali) as tgl_pemesanan"),            
-            'booking.lokasi_jemput as lokasi_jemput',
-            'booking.lokasi_tujuan as lokasi_tujuan',
+        $bookings = Sprintj::select([
+            'spj.id',
+            'spj.nama_pemesan as title',
+            'spj.tanggal_penjemputan as start',
+            'spj.tanggal_kembali as end',
+            \DB::raw("CONCAT(spj.tanggal_penjemputan, ' hingga ', spj.tanggal_kembali) as tgl_pemesanan"),            
+            'spj.lokasi_jemput as lokasi_jemput',
+            'spj.lokasi_tujuan as lokasi_tujuan',
             'bus_type.armada'
-        ])->join('bus_type', 'booking.tipe_bus', '=', 'bus_type.id')->get();
+        ])->join('bus_type', 'spj.bus_id', '=', 'bus_type.id')->get();
 
         foreach ($bookings as $booking) {
             if (!$booking->end) {
