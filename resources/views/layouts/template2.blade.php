@@ -141,8 +141,8 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">3 Februari 2025</div>
-                                        <span class="">Kelender Booking sudah menampilkan Armada, dan ketika diklik akan menampilkan rincian pesanan. Namun Basis Data masih menggunakan Tabel Booking. (Under Construction, mata sipit unjuk gigi, ntar ya sikit lagi)</span>
+                                        <div class="small text-gray-500">4 Februari 2025</div>
+                                        <span class="">Kelender Booking sudah ditampilkan berdasarkan Armada, dan ketika diklik akan menampilkan rincian pesanan. Namun Basis Data sudah menggunakan Tabel SPJ. (makan ikan jangan lari, kalo ada perbaikan sila kabari)</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
