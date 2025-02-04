@@ -111,6 +111,30 @@ class SpjController extends Controller
         //
     }
 
+    public function getBooking()
+    {
+        $bookings = Sprintj::select([
+            'spj.id',
+            'spj.nama_pemesan as title',
+            'spj.tanggal_penjemputan as start',
+            'spj.tanggal_kembali as end',
+            \DB::raw("CONCAT(spj.tanggal_penjemputan, ' hingga ', spj.tanggal_kembali) as tgl_pemesanan"),            
+            'spj.lokasi_jemput as lokasi_jemput',
+            'spj.lokasi_tujuan as lokasi_tujuan',
+            'bus_type.armada'
+        ])->join('bus_type', 'spj.bus_id', '=', 'bus_type.id')->get();
+
+        foreach ($bookings as $booking) {
+            if (!$booking->end) {
+                $booking->end = $booking->start; // Jika end kosong, gunakan start
+            } else {
+                $booking->end = date('Y-m-d', strtotime($booking->end . ' +1 day')); // Tambah 1 hari ke end
+            }
+        }
+
+        return response()->json($bookings);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

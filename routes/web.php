@@ -46,6 +46,8 @@ Route::get('/booking2/api/bookings', [BookingController::class, 'getBooking'])->
 Route::get('/kalender', [BookingController::class, 'kalender'])->name('kalender');;
 Route::resource('booking', BookingController::class);
 
+
+Route::get('/spj/api/bookings', [SpjController::class, 'getBooking'])->name('spj.getBooking');
 Route::post('/spj/{booking}', [SpjController::class, 'store2'])->name('spj.store2');
 Route::get('/spj/driver', [SpjController::class, 'index2'])->name('spj.driver');
 Route::get('/export/excel', [SpjController::class, 'exportToExcel'])->name('spj.export.excel');
