@@ -6,9 +6,27 @@
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
 
 
+    <!-- Modal Pop-up -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookingModalLabel">Detail SPJ</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Nama Pemesan:</strong> <span id="modalTitle"></span></p>
+            <p><strong>Rute Jemput:</strong> <span id="modalJemput"></span></p>
+            <p><strong>Rute Tujuan:</strong> <span id="modalTujuan"></span></p>
+            <p><strong>Tanggal Pemesanan:</strong> <span id="modalTglPemesanan"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 <!-- Content Row -->
 <div class="row">
-    <h1 class="h3 mb-4 text-gray-800">Kalender Booking</h1>
+    <h1 class="h3 mb-4 text-gray-800">Kalender Hasil SPJ</h1>
     <div class="col-md-12">
         <div id="calendar"></div>
     </div>
@@ -16,58 +34,68 @@
         var route = @json(route('getBooking'));
     </script>
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+
+      var armadaColors = {
+        "ITG-01": "#005d99",
+        "ITG-02": "#c0c0c0",
+        "ITG-03": "#ff6f20"
+      };
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        locale: 'id', // Setel locale menjadi bahasa Indonesia
+        locale: 'id',
         headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        buttonText: { // Menyesuaikan teks tombol
-            today: 'Hari Ini',
-            month: 'Bulan',
-            week: 'Minggu',
-            day: 'Hari'
+        buttonText: {
+          today: 'Hari Ini',
+          month: 'Bulan',
+          week: 'Minggu',
+          day: 'Hari'
         },
         events: function (fetchInfo, successCallback, failureCallback) {
-            axios.get(route)
-                .then(response => {
-                    // Sesuaikan data untuk FullCalendar
-                    const events = response.data.map(event => {
-                        // Tambahkan 1 hari ke 'end' hanya untuk tampilan
-                        const adjustedEnd = new Date(event.end);
-                        adjustedEnd.setDate(adjustedEnd.getDate() + 1);
-                        return {
-                            ...event,
-                            end: adjustedEnd.toISOString().split('T')[0] // Format kembali ke 'YYYY-MM-DD'
-                        };
-                    });
-
-                    successCallback(events);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    failureCallback(error);
-                });
+          axios.get(route)
+          .then(response => {
+            const events = response.data.map(event => {
+              return {
+                title: event.armada,
+                start: event.start,
+                end: event.end,
+                backgroundColor: armadaColors[event.armada] || "#3498db",
+                borderColor: armadaColors[event.armada] || "#3498db",
+                extendedProps: {
+                  title: event.title,
+                  lokasi_jemput: event.lokasi_jemput,
+                  lokasi_tujuan: event.lokasi_tujuan,
+                  tgl_pemesanan: event.tgl_pemesanan
+                }
+              };
+            });
+            successCallback(events);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            failureCallback(error);
+          });
         },
         eventClick: function (info) {
-            const start = new Date(info.event.start).toLocaleDateString();
-            const end = info.event.end
-                ? new Date(info.event.end).toLocaleDateString()
-                : 'Tidak tersedia';
-            const description = info.event.extendedProps.description || 'Deskripsi tidak tersedia';
+          document.getElementById('modalTitle').innerText = info.event.extendedProps.title;
+          document.getElementById('modalJemput').innerText = info.event.extendedProps.lokasi_jemput;
+          document.getElementById('modalTujuan').innerText = info.event.extendedProps.lokasi_tujuan;
+          document.getElementById('modalTglPemesanan').innerText = info.event.extendedProps.tgl_pemesanan;
 
-            alert(`Deskripsi: ${description}`);
+          var myModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+          myModal.show();
         }
+      });
+
+      calendar.render();
     });
-
-    calendar.render();
-});
-
     </script>
 </div>
 

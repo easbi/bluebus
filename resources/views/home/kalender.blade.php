@@ -71,69 +71,72 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
+  <script>
+    var route = @json(route('getBooking'));
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
+      var calendarEl = document.getElementById('calendar');
 
-        var armadaColors = {
-            "ITG-01": "#005d99",
-            "ITG-02": "#c0c0c0",
-            "ITG-03": "#ff6f20"
-        };
+      var armadaColors = {
+        "ITG-01": "#005d99",
+        "ITG-02": "#c0c0c0",
+        "ITG-03": "#ff6f20"
+      };
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'id',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            buttonText: {
-                today: 'Hari Ini',
-                month: 'Bulan',
-                week: 'Minggu',
-                day: 'Hari'
-            },
-            events: function (fetchInfo, successCallback, failureCallback) {
-                axios.get('booking2/api/bookings')
-                    .then(response => {
-                        const events = response.data.map(event => {
-                            return {
-                                title: event.armada,
-                                start: event.start,
-                                end: event.end,
-                                backgroundColor: armadaColors[event.armada] || "#3498db",
-                                borderColor: armadaColors[event.armada] || "#3498db",
-                                extendedProps: {
-                                    title: event.title,
-                                    lokasi_jemput: event.lokasi_jemput,
-                                    lokasi_tujuan: event.lokasi_tujuan,
-                                    tgl_pemesanan: event.tgl_pemesanan
-                                }
-                            };
-                        });
-                        successCallback(events);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        failureCallback(error);
-                    });
-            },
-            eventClick: function (info) {
-                document.getElementById('modalTitle').innerText = info.event.extendedProps.title;
-                document.getElementById('modalJemput').innerText = info.event.extendedProps.lokasi_jemput;
-                document.getElementById('modalTujuan').innerText = info.event.extendedProps.lokasi_tujuan;
-                document.getElementById('modalTglPemesanan').innerText = info.event.extendedProps.tgl_pemesanan;
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'id',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        buttonText: {
+          today: 'Hari Ini',
+          month: 'Bulan',
+          week: 'Minggu',
+          day: 'Hari'
+        },
+        events: function (fetchInfo, successCallback, failureCallback) {
+          axios.get('booking2/api/bookings')
+          .then(response => {
+            const events = response.data.map(event => {
+              return {
+                title: event.armada,
+                start: event.start,
+                end: event.end,
+                backgroundColor: armadaColors[event.armada] || "#3498db",
+                borderColor: armadaColors[event.armada] || "#3498db",
+                extendedProps: {
+                  title: event.title,
+                  lokasi_jemput: event.lokasi_jemput,
+                  lokasi_tujuan: event.lokasi_tujuan,
+                  tgl_pemesanan: event.tgl_pemesanan
+                }
+              };
+            });
+            successCallback(events);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            failureCallback(error);
+          });
+        },
+        eventClick: function (info) {
+          document.getElementById('modalTitle').innerText = info.event.extendedProps.title;
+          document.getElementById('modalJemput').innerText = info.event.extendedProps.lokasi_jemput;
+          document.getElementById('modalTujuan').innerText = info.event.extendedProps.lokasi_tujuan;
+          document.getElementById('modalTglPemesanan').innerText = info.event.extendedProps.tgl_pemesanan;
 
-                var myModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-                myModal.show();
-            }
-        });
+          var myModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+          myModal.show();
+        }
+      });
 
-        calendar.render();
+      calendar.render();
     });
   </script>
 
