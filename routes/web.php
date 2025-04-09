@@ -5,6 +5,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SpjController;
 use App\Http\Controllers\DriverController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Exception\HttpException;  //temporary
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('home.index');
+// })->name('home');
+
+//temporary
 Route::get('/', function () {
-    return view('home.index');
-})->name('home');
+    abort(503);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
