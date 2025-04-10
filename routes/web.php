@@ -18,14 +18,14 @@ use Symfony\Component\HttpKernel\Exception\HttpException;  //temporary
 |
 */
 
-// Route::get('/', function () {
-//     return view('home.index');
-// })->name('home');
+Route::get('/', function () {
+    return view('home.index');
+})->name('home');
 
 //temporary
-Route::get('/', function () {
-    abort(503);
-});
+// Route::get('/', function () {
+//     abort(503);
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
