@@ -5,24 +5,26 @@
 
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
 
-
-    <!-- Modal Pop-up -->
-    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="bookingModalLabel">Detail SPJ</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p><strong>Nama Pemesan:</strong> <span id="modalTitle"></span></p>
-            <p><strong>Rute Jemput:</strong> <span id="modalJemput"></span></p>
-            <p><strong>Rute Tujuan:</strong> <span id="modalTujuan"></span></p>
-            <p><strong>Tanggal Pemesanan:</strong> <span id="modalTglPemesanan"></span></p>
-          </div>
-        </div>
+<!-- Modal Bootstrap 4 -->
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookingModalLabel">Detail SPJ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Nama Pemesan:</strong> <span id="modalTitle"></span></p>
+        <p><strong>Rute Jemput:</strong> <span id="modalJemput"></span></p>
+        <p><strong>Rute Tujuan:</strong> <span id="modalTujuan"></span></p>
+        <p><strong>Tanggal Pemesanan:</strong> <span id="modalTglPemesanan"></span></p>
       </div>
     </div>
+  </div>
+</div>
+
 
 <!-- Content Row -->
 <div class="row">
